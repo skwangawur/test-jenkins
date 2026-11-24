@@ -5,29 +5,19 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'Getting source code from GitHub'
+                checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building application...'
-                echo 'Build triggered automatically by GitHub!'
-                sh 'echo "Build successful"'
+                sh "docker build -t my-nginx-app:1.0 ."
             }
         }
 
-        stage('Test') {
+        stage('Verify docker image') {
             steps {
-                echo 'Running tests...'
-                sh 'echo "Test successful"'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-                sh 'echo "Deployment successful"'
+                sh "docker images my-nginx-app"
             }
         }
     }
