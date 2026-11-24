@@ -12,6 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building application...'
+                echo 'Build triggered automatically by GitHub!'
                 sh 'echo "Build successful"'
             }
         }
