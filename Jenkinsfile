@@ -49,5 +49,22 @@ pipeline {
                 sh 'docker images $DOCKER_IMAGE'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                    docker pull $DOCKER_IMAGE:$IMAGE_TAG
+
+                    docker rm -f $CONTAINER_NAME || true
+
+                    docker run -d \
+                        --name $CONTAINER_NAME \
+                        -p 8081:80 \
+                        --restart unless-stopped \
+                        $DOCKER_IMAGE:$IMAGE_TAG
+                '''
+            }
+        }  
+        
     }
 }
