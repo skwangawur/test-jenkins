@@ -5,6 +5,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'rafiadw/jenkins-test'
         IMAGE_TAG = '1.0'
+        CONTAINER_NAME = 'jenkins-learning-app'
     }
 
     stages {
