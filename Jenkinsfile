@@ -2,7 +2,7 @@
 pipeline {
     agent any
 
-    environtment {
+    environment {
         DOCKER_IMAGE = 'rafiadw/jenkins-test'
         IMAGE_TAG = '1.0'
     }
