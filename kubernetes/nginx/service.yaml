@@ -4,7 +4,7 @@ metadata:
   name: nginx-gitops
   namespace: default
 spec:
-  type: nodePort
+  type: NodePort
   selector:
     app: nginx-gitops
   ports:
